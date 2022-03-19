@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Bean;
 import java.sql.SQLException;
 
 @SpringBootApplication
-@EntityScan(basePackages = "/cz/uhk/fim/musicroomreservationsystem/model")
+@EntityScan(basePackages = "/com.example.mois_user/domain")
 public class MoisUserApplication {
 
     @Autowired
