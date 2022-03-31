@@ -2,8 +2,10 @@ package com.example.mois_user;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 
-@SpringBootApplication
+@SpringBootApplication  
+@EnableFeignClients
 public class MoisUserApplication {
 
     public static void main(String[] args) {
