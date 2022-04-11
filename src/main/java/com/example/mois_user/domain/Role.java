@@ -10,8 +10,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 
-@Entity
-@Data
+@Entity @Data
 @Table(name = "roles")
 @NoArgsConstructor
 @AllArgsConstructor

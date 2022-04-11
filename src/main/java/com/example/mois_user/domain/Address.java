@@ -10,9 +10,8 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 
-@Entity
+@Entity @Data
 @Table(name = "address")
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
@@ -30,10 +29,6 @@ public class Address implements Serializable {
     @Column(name = "PostCode")
     @NotBlank(message = "PSČ nesmí být prázdné.")
     String postCode;
-
-    @Column(name = "District")
-    @NotBlank(message = "Název okresu nesmí být prázdné.")
-    String district;
 
     @Column(name = "StreetName")
     @NotBlank(message = "Název ulice nesmí být prázdné.")
