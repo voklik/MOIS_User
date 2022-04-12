@@ -22,10 +22,10 @@ public class UserController {
         return ResponseEntity.ok(user);
     }
 
-    @DeleteMapping("/{id}")
+    /*@DeleteMapping("/{id}")
     public ResponseEntity<User> deleteClientUser(@PathVariable Long id) {
         userService.deleteUser(id);
         return ResponseEntity.ok().build();
-    }
+    }*/
 
 }
