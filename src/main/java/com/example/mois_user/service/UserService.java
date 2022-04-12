@@ -8,6 +8,7 @@ import com.example.mois_user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -27,17 +28,17 @@ public class UserService {
     }
 
     public Optional<User> getUserById(long id) {
-        Optional<User> user  = userRepository.findById(id);
+        Optional<User> user = userRepository.findById(id);
         return user;
     }
 
     public User createUser(SignUpRequest signUpRequest) {
 
         Address address = addressService.createAddress(
-                                            signUpRequest.getPostCode(),
-                                            signUpRequest.getCity(),
-                                            signUpRequest.getStreetName(),
-                                            signUpRequest.getStreetNumber());
+                signUpRequest.getPostCode(),
+                signUpRequest.getCity(),
+                signUpRequest.getStreetName(),
+                signUpRequest.getStreetNumber());
 
         User user = new User();
         user.setFirstName(signUpRequest.getFirstName());
@@ -56,7 +57,18 @@ public class UserService {
             //LOG.error("Error during registration. {}", e.getMessage());
             throw new UserExistException("The user " + user.getEmail() + " already exist. Please check credentials");
         }
+    }
 
+    public User updateUser(User user) {
+        return userRepository.save(user);
+    }
+
+    public void deleteUser(Long id) {
+        try {
+            userRepository.delete(id);
+        } catch (Exception e) {
+            throw new UserExistException("The user is already deleted.");
+        }
     }
 
 }
