@@ -26,15 +26,11 @@ public class Address implements Serializable {
     @NotBlank(message = "Město nesmí být prázdné.")
     String city;
 
-    @Column(name = "PostCode")
+    @Column(name = "post_code")
     @NotBlank(message = "PSČ nesmí být prázdné.")
     String postCode;
 
-    @Column(name = "StreetName")
+    @Column(name = "street")
     @NotBlank(message = "Název ulice nesmí být prázdné.")
-    String streetName;
-
-    @Column(name = "StreetNumber")
-    @NotBlank(message = "Popisné číslo nesmí být prázdné.")
-    String streetNumber;
+    String street;
 }
