@@ -34,8 +34,6 @@ public class SignUpRequest {
 
     private String postCode;
 
-    private String streetName;
-
-    private String streetNumber;
+    private String street;
 
 }
