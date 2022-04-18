@@ -12,18 +12,16 @@ import java.io.Serializable;
 
 @Entity
 @Data
-@Table(name = "roles")
+@Table(name = "sys_role")
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Role implements Serializable {
+public class Role {
 
     @Id
-    @Column(name = "IDRole")
     @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;
 
-    @Column(name = "Name")
-    @NotBlank(message = "Název role nesmí být prázdné.")
+    @Column(name = "role_name")
     String name;
 }

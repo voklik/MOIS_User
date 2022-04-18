@@ -11,12 +11,11 @@ public class AddressService {
 
     private final AddressRepository addressRepository;
 
-    public Address createAddress(String postCode, String city, String streetName, String streetNumber) {
+    public Address createAddress(String postCode, String city, String street) {
         Address address = new Address();
         address.setPostCode(postCode);
         address.setCity(city);
-        address.setStreetName(streetName);
-        address.setStreetNumber(streetNumber);
+        address.setStreet(street);
 
         try {
             address = addressRepository.save(address);

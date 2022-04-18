@@ -37,8 +37,7 @@ public class UserService {
         Address address = addressService.createAddress(
                 signUpRequest.getPostCode(),
                 signUpRequest.getCity(),
-                signUpRequest.getStreetName(),
-                signUpRequest.getStreetNumber());
+                signUpRequest.getStreet());
 
         User user = new User();
         user.setFirstName(signUpRequest.getFirstName());

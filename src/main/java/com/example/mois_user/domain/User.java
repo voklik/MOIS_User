@@ -15,51 +15,45 @@ import javax.validation.constraints.Pattern;
 import java.io.Serializable;
 import java.util.Collection;
 
-@Entity @Data
-@Table(name = "users")
+@Data
+@Entity
+@Table(name = "sys_user")
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class User implements Serializable, UserDetails {
-    //TODO: validační anotace pro DTO
+public class User implements UserDetails {
+
     @Id
-    @Column(name = "IDUser")
     @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;
 
     @Column(name = "email")
-    @Email(message = "Nesprávný formát emailu.")
-    @NotBlank(message = "Emailová adresa nesmí být prázdná.")
     String email;
 
-    @Column(name = "PasswordUser")
-    @NotBlank(message = "Heslo nesmí být prázdné.")
+    @Column(name = "password")
     String password;
 
-    @Column(name = "FirstName")
-    @NotBlank(message = "Jméno nesmí být prázdné.")
+    @Column(name = "first_name")
     String firstName;
 
-    @Column(name = "LastName")
-    @NotBlank(message = "Příjmení nesmí být prázdné.")
+    @Column(name = "last_name")
     String lastName;
 
-    @Column(name = "phone")
-    @Pattern(regexp = "^(([\\+][0-9]{3})?[\\s]?[0-9]{3}[\\s]?[0-9]{3}[\\s]?[0-9]{3})?$", message = "Špatný formát telefonního čísla.")
+    @Column(name = "phone_number")
     String phoneNumber;
 
-    @Column(name = "Actives")
+    @Column(name = "is_active")
     boolean active;
 
     @Transient
     Collection<? extends GrantedAuthority> authorities;
 
     @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH}, optional = false)
-    @JoinColumn(name = "IDRole", referencedColumnName = "IDRole")
+    @JoinColumn(name = "id_role")
     Role role;
 
     @OneToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH}, optional = false)
-    @JoinColumn(name = "IDAddress", referencedColumnName = "IDAddress")
+    @JoinColumn(name = "id_address")
     Address address;
 
     @Override
