@@ -62,12 +62,4 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    /*public void deleteUser(Long id) {
-        try {
-            userRepository.delete(id);
-        } catch (Exception e) {
-            throw new UserExistException("The user is already deleted.");
-        }
-    }*/
-
 }
