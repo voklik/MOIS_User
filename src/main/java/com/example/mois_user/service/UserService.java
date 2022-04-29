@@ -32,6 +32,11 @@ public class UserService {
         return user;
     }
 
+    public Optional<User> getUserByEmail(String email) {
+        Optional<User> user = userRepository.findByEmail(email);
+        return user;
+    }
+
     public User createUser(SignUpRequest signUpRequest) {
 
         Address address = addressService.createAddress(

@@ -7,7 +7,9 @@ import lombok.Data;
 @AllArgsConstructor
 public class JwtTokenSuccessResponse {
 
-    private boolean success;
     private String jwt;
+    private long userId;
+    private String email;
+    private String role;
 
 }
