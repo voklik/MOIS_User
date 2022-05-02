@@ -6,16 +6,12 @@ import lombok.Data;
 public class UserDTO {
 
     Long id;
-
     String email;
-
-    String password;
-
     String firstName;
-
     String lastName;
-
     String phoneNumber;
-
     boolean active;
+    AddressDTO address;
+    RoleDTO role;
+
 }
