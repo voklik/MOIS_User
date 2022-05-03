@@ -2,6 +2,7 @@ package com.example.mois_user.controller;
 
 import com.example.mois_user.domain.User;
 import com.example.mois_user.dto.UserDTO;
+import com.example.mois_user.security.JwtTokenProvider;
 import com.example.mois_user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -21,6 +22,7 @@ import java.util.Optional;
 public class UserController {
 
     private final UserService userService;
+    private final JwtTokenProvider jwtTokenProvider;
 
     @PutMapping("/df")
     public ResponseEntity<User> updateUser(@RequestBody User user) {
@@ -28,12 +30,6 @@ public class UserController {
         userService.updateUser(user);
         return ResponseEntity.ok(user);
     }
-
-    /*@GetMapping("/")
-    public ResponseEntity<Page<UserDTO>> getAllUsers(Pageable pageable, String searchText) {
-        List<UserDTO> users = userService.getAllUsers();
-        return ResponseEntity.ok(users);
-    }*/
 
     @GetMapping({"/", "/{page}/{size}"})
     public ResponseEntity<Page<UserDTO>> getAllUsers(@PathVariable(required = false) Integer page, @PathVariable(required = false) Integer size) {
@@ -54,4 +50,8 @@ public class UserController {
         return ResponseEntity.ok(user);
     }
 
+    @GetMapping("/verify")
+    public Boolean verifyUser(@RequestHeader("Authorization") String token) {
+        return jwtTokenProvider.validateToken(token);
+    }
 }
