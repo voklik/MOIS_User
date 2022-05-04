@@ -1,4 +1,4 @@
-package com.example.mois_user.filter;
+package com.example.mois_user.payload.filter;
 
 import com.example.mois_user.domain.User;
 import com.example.mois_user.security.JwtTokenProvider;
@@ -32,7 +32,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, FilterChain filterChain) throws ServletException, IOException {
         try {
             String jwt = getJwtFromRequest(httpServletRequest);
-            if (StringUtils.hasText(jwt) && jwtTokenProvider.validateToken(jwt)) {
+                if (StringUtils.hasText(jwt) && jwtTokenProvider.validateToken(jwt)) {
                 Long userId = jwtTokenProvider.getUserIdFromToken(jwt);
                 User userDetails = customUserDetailsService.loadUserById(userId);
 
@@ -51,6 +51,6 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         if (StringUtils.hasText(bearerToken) && bearerToken.startsWith(SecurityConstants.TOKEN_PREFIX)) {
             return bearerToken.split(" ")[1];
         }
-        return "";
+        return bearerToken;
     }
 }

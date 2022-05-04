@@ -6,7 +6,6 @@ import com.example.mois_user.payload.request.SignUpRequest;
 import com.example.mois_user.payload.response.JwtTokenSuccessResponse;
 import com.example.mois_user.payload.response.MessageResponse;
 import com.example.mois_user.security.JwtTokenProvider;
-import com.example.mois_user.security.SecurityConstants;
 import com.example.mois_user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +16,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
-import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
@@ -47,7 +45,7 @@ public class AuthController {
                 .authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getUsername(),
                         loginRequest.getPassword()));
         SecurityContextHolder.getContext().setAuthentication(authentication);
-        String jwt = SecurityConstants.TOKEN_PREFIX + jwtTokenProvider.generateToken(authentication);
+        String jwt = jwtTokenProvider.generateToken(authentication);
 
         User user = userService.getUserByEmail(loginRequest.getUsername()).get();
         return ResponseEntity.ok(new JwtTokenSuccessResponse(jwt, user.getId(), user.getEmail(), user.getRole().getName()));

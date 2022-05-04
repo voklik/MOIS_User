@@ -1,6 +1,6 @@
 package com.example.mois_user.configuration;
 
-import com.example.mois_user.filter.JwtAuthenticationFilter;
+import com.example.mois_user.payload.filter.JwtAuthenticationFilter;
 import com.example.mois_user.security.JwtAuthenticationEntryPoint;
 import com.example.mois_user.security.SecurityConstants;
 import com.example.mois_user.service.CustomUserDetailsService;
