@@ -32,7 +32,7 @@ public class AuthController {
         if (bindingResult.hasErrors()) {
             //return responseErrorValidator.getErrorResponse(bindingResult);
         }
-        userService.createUser(signupRequest);
+        userService.createUser(signupRequest, false);
         return ResponseEntity.ok(new MessageResponse("User registered successfully"));
     }
 

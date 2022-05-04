@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import static com.example.mois_user.domain.util.Role.ADMIN_ROLE;
 import static com.example.mois_user.domain.util.Role.USER_ROLE;
 
 @Service
@@ -78,7 +79,7 @@ public class UserService {
         return user;
     }
 
-    public User createUser(SignUpRequest signUpRequest) {
+    public User createUser(SignUpRequest signUpRequest, boolean isAdmin) {
 
         Address address = addressService.createAddress(
                 signUpRequest.getPostCode(),
@@ -93,7 +94,12 @@ public class UserService {
         user.setPassword(bCryptPasswordEncoder.encode(signUpRequest.getPassword()));
         user.setAddress(address);
         user.setActive(true);
-        user.setRole(roleService.getRoleByName(USER_ROLE));
+        if(isAdmin) {
+            user.setRole(roleService.getRoleByName(ADMIN_ROLE));
+        } else {
+            user.setRole(roleService.getRoleByName(USER_ROLE));
+        }
+
 
         try {
             return userRepository.save(user);
