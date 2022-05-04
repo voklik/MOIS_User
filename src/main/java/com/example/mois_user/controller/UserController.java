@@ -2,6 +2,7 @@ package com.example.mois_user.controller;
 
 import com.example.mois_user.domain.User;
 import com.example.mois_user.dto.UserDTO;
+import com.example.mois_user.repository.UserRepository;
 import com.example.mois_user.security.JwtTokenProvider;
 import com.example.mois_user.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -24,14 +25,17 @@ public class UserController {
     private final UserService userService;
     private final JwtTokenProvider jwtTokenProvider;
 
-    @PutMapping("/df")
-    public ResponseEntity<User> updateUser(@RequestBody User user) {
+    @GetMapping("/deactive/{id}")
+    public ResponseEntity<User> deactiveUser(@PathVariable long id) {
 
+        Optional<User> userObj = userService.getUserById(id);
+        User user = userObj.get();
+        user.setActive(!user.isActive());
         userService.updateUser(user);
         return ResponseEntity.ok(user);
     }
 
-    @GetMapping({"/", "/{page}/{size}"})
+    @GetMapping({"", "/{page}/{size}"})
     public ResponseEntity<Page<UserDTO>> getAllUsers(@PathVariable(required = false) Integer page, @PathVariable(required = false) Integer size) {
         if(page == null && size == null ) {
             page = 1;
