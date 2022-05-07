@@ -15,8 +15,6 @@ public class JwtTokenProvider {
     @Value("${jwt.secret}")
     private String tokenSecret;
 
-    //public static final Logger LOG = LoggerFactory.getLogger(JwtTokenProvider.class);
-
     public String generateToken(Authentication authentication) {
         User user = (User)authentication.getPrincipal();
         Date now = new Date(System.currentTimeMillis());

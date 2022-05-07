@@ -1,4 +1,4 @@
-package com.example.mois_user.payload.filter;
+package com.example.mois_user.filter;
 
 import com.example.mois_user.domain.User;
 import com.example.mois_user.security.JwtTokenProvider;

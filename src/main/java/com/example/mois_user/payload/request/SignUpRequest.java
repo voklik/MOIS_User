@@ -11,31 +11,31 @@ import javax.validation.constraints.Size;
 @PasswordMatches
 public class SignUpRequest {
 
-    @NotBlank(message = "Email je povinný")
-    @Email(message = "Špatný formát")
+    @NotBlank(message = "Email is required")
+    @Email(message = "Bad email format")
     private String email;
 
     private String phoneNumber;
 
-    @NotBlank(message = "Vložte své jméno")
+    @NotBlank(message = "First name cannot be empty")
     private String firstName;
 
-    @NotBlank(message = "Vložte své příjmení")
+    @NotBlank(message = "Last name cannot be empty")
     private String lastName;
 
     @Size(min = 6)
-    @NotBlank(message = "Heslo je povinné")
+    @NotBlank(message = "Password cannot be empty")
     private String password;
 
     private String confirmPassword;
 
-    @NotBlank(message = "Město je povinné")
+    @NotBlank(message = "City cannot be empty")
     private String city;
 
-    @NotBlank(message = "PSČ je povinné")
+    @NotBlank(message = "Post code cannot be empty")
     private String postCode;
 
-    @NotBlank(message = "Ulice je povinná")
+    @NotBlank(message = "Street cannot be empty")
     private String street;
 
 }

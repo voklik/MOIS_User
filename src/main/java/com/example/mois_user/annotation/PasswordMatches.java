@@ -1,7 +1,6 @@
 package com.example.mois_user.annotation;
 
 import com.example.mois_user.validation.PasswordMatchesValidator;
-
 import javax.validation.Constraint;
 import javax.validation.Payload;
 import java.lang.annotation.*;
@@ -12,7 +11,7 @@ import java.lang.annotation.*;
 @Target({ElementType.TYPE, ElementType.ANNOTATION_TYPE})
 public @interface PasswordMatches {
 
-    String message() default "Password do not match";
+    String message() default "Passwords do not match";
 
     Class<?>[] groups() default{};
 

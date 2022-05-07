@@ -9,5 +9,4 @@ public interface RoleRepository extends JpaRepository<Role, Long> {
 
     Role findByNameEquals(String name);
 
-
 }

@@ -1,6 +1,6 @@
 package com.example.mois_user.configuration;
 
-import com.example.mois_user.payload.filter.JwtAuthenticationFilter;
+import com.example.mois_user.filter.JwtAuthenticationFilter;
 import com.example.mois_user.security.JwtAuthenticationEntryPoint;
 import com.example.mois_user.security.SecurityConstants;
 import com.example.mois_user.service.CustomUserDetailsService;
@@ -37,25 +37,6 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.cors().and()
                 .csrf().disable()
-                /*.authorizeRequests().antMatchers("/authenticate").permitAll()
-                .antMatchers(*/
-                        //"/**/all",
-                        //"/**/player/registration",
-                        //"/**/mail/contact/us",
-                        //"/**/activate/**",
-                        //"/**/country/cities/**",
-                        //"/**/playerTeamParent/add",
-                        //"/**/forgot-password",
-                        //"/**/reset-password/**").permitAll()
-                /*.anyRequest().authenticated().and()
-                .exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint).and().sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                .and()
-                .logout()
-                .deleteCookies("JSESSIONID")
-                .invalidateHttpSession(true)
-                .permitAll();
-        http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);*/
                 .exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint)
                 .and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)

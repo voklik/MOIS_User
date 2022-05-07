@@ -1,9 +1,7 @@
 package com.example.mois_user.data_loader;
 
 import com.example.mois_user.domain.Address;
-import com.example.mois_user.domain.Role;
 import com.example.mois_user.repository.AddressRepository;
-import com.example.mois_user.repository.RoleRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
